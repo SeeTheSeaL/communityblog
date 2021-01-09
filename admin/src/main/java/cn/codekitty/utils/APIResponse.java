@@ -1,4 +1,4 @@
-package com.admin.utils;
+package cn.codekitty.utils;
 
 /**
  * 返回的参数封装类
