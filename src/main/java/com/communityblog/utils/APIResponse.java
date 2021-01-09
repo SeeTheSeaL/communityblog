@@ -1,4 +1,4 @@
-package cn.codekitty.utils;
+package com.communityblog.utils;
 
 /**
  * 返回的参数封装类
