@@ -5,7 +5,7 @@
 <mapper namespace="com.admin.mapper.AdminMapper">
 
     <select id="getUserInfoByCond" resultType="com.admin.pojo.Admin">
-        SELECT  admin_name,password
+        SELECT  admin_name,password,id
         FROM blog_admin
         <where>
             <if test="adminName != null">
