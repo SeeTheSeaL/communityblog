@@ -4,15 +4,15 @@ package com.communityblog.pojo;
  * 管理员实体类
  */
 public class Admin {
-    private String id;
+    private Integer id;
     private String adminName;
     private String password;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

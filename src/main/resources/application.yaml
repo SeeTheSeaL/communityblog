@@ -38,5 +38,7 @@ spring:
     cache: false
 
 mybatis:
-  type-aliases-package: cn.codekitty.pojo
-  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.communityblog.pojo
+  mapper-locations: classpath:com/communityblog/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

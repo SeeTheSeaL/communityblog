@@ -17,7 +17,6 @@ class CommunityblogApplicationTests {
         System.out.println(admin.getAdminName());
         System.out.println(admin.getId());
         System.out.println(admin.getPassword());
-        System.out.println("2131");
     }
 
 }
