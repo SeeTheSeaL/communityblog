@@ -4,6 +4,9 @@ import com.communityblog.pojo.Admin;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 管理员接口
+ */
 @Mapper
 public interface AdminMapper {
     /**

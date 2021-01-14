@@ -30,6 +30,7 @@ spring:
       pool-prepared-statements: false
       max-pool-prepared-statement-per-connection-size: 20
   thymeleaf:
+    #配置视图解析
     prefix: classpath:/templates/
     check-template-location: true
     suffix: .html
@@ -41,4 +42,5 @@ mybatis:
   type-aliases-package: com.communityblog.pojo
   mapper-locations: classpath:com/communityblog/mapper/*.xml
   configuration:
+    #驼峰命名转换
     map-underscore-to-camel-case: true
