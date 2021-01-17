@@ -1,6 +1,7 @@
 package com.communityblog.service;
 
 import com.communityblog.pojo.Admin;
+import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 
