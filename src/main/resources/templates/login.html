@@ -36,21 +36,12 @@
 
     <script>
         var admin1 = new $.admin();
-        // $(document).ready(function(){
-        //     if(msg!=null){
-        //         admin1.alertError(msg);
-        //     }else{
-        //         return;
-        //     }
-        // });
+
         function checkForm() {
             admin1.post({
                 url: '/admin/login',
                 data: $("#loginForm").serialize(),
                 success: function (result) {
-                    console.log("888888888888888888");
-                    console.log(result);
-                    console.log("888888888888888888");
                     if (result && result.code == 'success') {
                         window.location.href = 'index';
                     } else {

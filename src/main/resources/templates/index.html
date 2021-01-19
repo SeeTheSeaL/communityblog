@@ -41,11 +41,11 @@
         </ul>
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
+            <a href="javascript:;">{{admin}}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
               <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
               <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-              <dd><a href="./login.html">退出</a></dd>
+              <dd><a th:href="@{/login}">退出</a></dd>
             </dl>
           </li>
           <li class="layui-nav-item to-index"><a th:href="@{admin-list}">前台首页</a></li>
@@ -77,7 +77,7 @@
                         </a>
                     </li >
                     <li date-refresh="1">
-                        <a _href="member-del.html">
+                        <a th:_href="@{/member-del}">
 
                             <cite>会员删除</cite>
                             
@@ -124,7 +124,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="order-list.html">
+                        <a th:_href="@{/index/order-list}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
                         </a>
@@ -169,25 +169,25 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin-list.html">
+                        <a th:_href="@{/index/admin-list}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员列表</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-role.html">
+                        <a th:_href="@{/index/admin-role}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>角色管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-cate.html">
+                        <a th:_href="@{/index/admin-cate}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>权限分类</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-rule.html">
+                        <a th:_href="@{/index/admin-rule}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>权限管理</cite>
                         </a>
@@ -322,6 +322,14 @@
     </div>
     <!-- 底部结束 -->
     <script>
+        $(document).ready(function(){
+            if(msg!=null){
+                admin1.alertError(msg);
+            }else{
+                return;
+            }
+        });
+
     //百度统计可去掉
     var _hmt = _hmt || [];
     (function() {

@@ -17,17 +17,7 @@ public class testController {
         model.addAttribute("msg","message");
         return "login";
     }
-    @RequestMapping("/member-list")
-    public String toMemberList(Model model){
-        model.addAttribute("msg","message");
-        return "member-list";
-    }
 
-    @RequestMapping("/member-list1")
-    public String toMemberList1(Model model){
-        model.addAttribute("msg","message");
-        return "member-list1";
-    }
 
 
 }

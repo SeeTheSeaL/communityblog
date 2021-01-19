@@ -1,10 +1,16 @@
 package com.communityblog.utils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * ip工具类
@@ -60,5 +66,36 @@ public class IPKit {
         } else {
             return localip;
         }
+    }
+    //根据IP地址获取MAC地址
+    public static String getMacByIP(String IPAddress) throws IOException {
+        String result = commond("ping -n 3 " + IPAddress);
+        if ( result.contains("TTL")) {
+            result = commond("arp -a " + IPAddress);
+        }
+        System.out.println(result);
+        String regExp = "([0-9A-Fa-f]{2})([-:][0-9A-Fa-f]{2}){5}";
+        Pattern pattern = Pattern.compile(regExp);
+        Matcher matcher = pattern.matcher(result);
+        StringBuilder stringBuilder = new StringBuilder();
+        while( matcher.find() ){
+            String temp = matcher.group();
+            System.out.println(temp);
+            stringBuilder.append(temp);
+        }
+        return stringBuilder.toString();
+    }
+
+    public static String commond(String cmd) throws IOException{
+        Process process = Runtime.getRuntime().exec(cmd);
+        InputStream inputStream = process.getInputStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = null;
+        while((line = bufferedReader.readLine()) != null ){
+            //String encode = System.getProperty("sun.jun.encoding");
+            stringBuilder.append(line);
+        }
+        return stringBuilder.toString();
     }
 }
