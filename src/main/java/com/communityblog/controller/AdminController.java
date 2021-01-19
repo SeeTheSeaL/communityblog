@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @Controller
 @RequestMapping("/admin")
@@ -19,10 +21,10 @@ public class AdminController extends BaseController{
     @Autowired
     AdminService adminService;
 
-//    @GetMapping("/index")
-//    public String index(){
-//        return "index";
-//    }
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
     @GetMapping("/login")
     public String toLogin(){
         return "login";
@@ -36,8 +38,17 @@ public class AdminController extends BaseController{
         Admin login = adminService.Login(adminName, password);
         System.out.println(adminName);
         String ip= IPKit.getIpAddrByRequest(request); // 获取ip并过滤登录时缓存的bug
-        Integer error_count = cache.hget("login_error_count",ip);//登陆错误计数
+        InetAddress addr = null;
+        try {
+            addr = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
+        String address = addr.getHostAddress();
+        System.out.println(ip);
+        System.out.println(address);
+        Integer error_count = cache.hget("login_error_count",ip);//登陆错误计数
         try {
             Admin userInfo = adminService.Login(adminName, password);
             request.getSession().setAttribute(login.getAdminName(), userInfo);

@@ -7,13 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="/css/font.css">
-	<link rel="stylesheet" href="/css/xadmin.css">
+    <link rel="stylesheet" href="/css/font.css" />
+	<link rel="stylesheet" href="/css/xadmin.css" />
+    <link rel="stylesheet" href="/css/sweetalert2.min.css" />
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/js/xadmin.js"></script>
     <script type="text/javascript" src="/js/cookie.js"></script>
     <script type="text/javascript" src="/js/adminBase.js"></script>
+    <script type="text/javascript" src="/js/sweetalert2.min.js"></script>
 
 </head>
 <body class="login-bg">
@@ -22,7 +24,7 @@
         <div class="message">admin-管理登录</div>
         <div id="darkbannerwrap"></div>
         
-        <form method="post" class="layui-form" id="loginForm" onsubmit="return checkForm()">
+        <form method="post" class="layui-form" id="loginForm" onsubmit="return checkForm()" >
             <input name="adminName" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
             <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
@@ -33,15 +35,24 @@
     </div>
 
     <script>
-
         var admin1 = new $.admin();
+        // $(document).ready(function(){
+        //     if(msg!=null){
+        //         admin1.alertError(msg);
+        //     }else{
+        //         return;
+        //     }
+        // });
         function checkForm() {
             admin1.post({
                 url: '/admin/login',
                 data: $("#loginForm").serialize(),
                 success: function (result) {
+                    console.log("888888888888888888");
+                    console.log(result);
+                    console.log("888888888888888888");
                     if (result && result.code == 'success') {
-                        window.location.href = '/admin/index';
+                        window.location.href = 'index';
                     } else {
                         admin1.alertError(result.msg || '登录失败');
                     }

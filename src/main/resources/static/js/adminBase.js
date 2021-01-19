@@ -1,5 +1,5 @@
 /**
- *  Admin全局函数对象   var tale = new $.tale();
+ *  Admin全局函数对象   var admin = new $.admin();
  */
 $.extend({
     admin: function () {
@@ -10,7 +10,7 @@ $.extend({
  * 成功弹框
  * @param options
  */
-$.tale.prototype.alertOk = function (options) {
+$.admin.prototype.alertOk = function (options) {
     options = options.length ? {text:options} : ( options || {} );
     options.title = options.title || '操作成功';
     options.text = options.text;
@@ -24,7 +24,7 @@ $.tale.prototype.alertOk = function (options) {
  * 弹出成功，并在500毫秒后刷新页面
  * @param text
  */
-$.tale.prototype.alertOkAndReload = function (text) {
+$.admin.prototype.alertOkAndReload = function (text) {
     this.alertOk({text:text, then:function () {
         setTimeout(function () {
             window.location.reload();
@@ -36,7 +36,7 @@ $.tale.prototype.alertOkAndReload = function (text) {
  * 警告弹框
  * @param options
  */
-$.tale.prototype.alertWarn = function (options) {
+$.admin.prototype.alertWarn = function (options) {
     options = options.length ? {text:options} : ( options || {} );
     options.title = options.title || '警告信息';
     options.text = options.text;
@@ -49,7 +49,7 @@ $.tale.prototype.alertWarn = function (options) {
  * 询问确认弹框，这里会传入then函数进来
  * @param options
  */
-$.tale.prototype.alertConfirm = function (options) {
+$.admin.prototype.alertConfirm = function (options) {
     options = options || {};
     options.title = options.title || '确定要删除吗？';
     options.text = options.text;
@@ -62,7 +62,7 @@ $.tale.prototype.alertConfirm = function (options) {
  * 错误提示
  * @param options
  */
-$.tale.prototype.alertError = function (options) {
+$.admin.prototype.alertError = function (options) {
     options = options.length ? {text:options} : ( options || {} );
     options.title = options.title || '错误信息';
     options.text = options.text;
@@ -74,7 +74,7 @@ $.tale.prototype.alertError = function (options) {
  * 公共弹框
  * @param options
  */
-$.tale.prototype.alertBox = function (options) {
+$.admin.prototype.alertBox = function (options) {
     swal({
         title: options.title,
         text: options.text,
@@ -97,7 +97,7 @@ $.tale.prototype.alertBox = function (options) {
  *
  * @param options   参数
  */
-$.tale.prototype.post = function (options) {
+$.admin.prototype.post = function (options) {
     var self = this;
     $.ajax({
         type: 'POST',
@@ -118,16 +118,16 @@ $.tale.prototype.post = function (options) {
 /**
  * 显示动画
  */
-$.tale.prototype.showLoading = function () {
-    if ($('#tale-loading').length == 0) {
-        $('body').append('<div id="tale-loading"></div>');
+$.admin.prototype.showLoading = function () {
+    if ($('#admin-loading').length == 0) {
+        $('body').append('<div id="admin-loading"></div>');
     }
-    $('#tale-loading').show();
+    $('#admin-loading').show();
 };
 
 /**
  * 隐藏动画
  */
-$.tale.prototype.hideLoading = function () {
-    $('#tale-loading') && $('#tale-loading').hide();
+$.admin.prototype.hideLoading = function () {
+    $('#admin-loading') && $('#admin-loading').hide();
 };
